@@ -1,0 +1,41 @@
+
+/* Broad, element wide selectors (low specificity) */
+body {
+    /* TODO */
+}
+
+/* Random additional elements */
+
+.js-disabled-header {
+
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    bottom: 0;
+    margin: 0;
+    padding: 10px;
+    background-color: red;
+    color: white;
+
+    animation: pulse-slightly 2s infinite;
+
+}
+
+@keyframes pulse-slightly {
+
+    0% {
+        filter: none;
+        transform: none;
+    }
+
+    50% {
+        filter: brightness(1.5);
+        transform: scale(1.02);
+    }
+
+    100% {
+        filter: none;
+        transform: none;
+    }
+
+}
