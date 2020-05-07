@@ -29,14 +29,72 @@ body {
 }
 
 .header-page .console-intro {
-    padding: 25px;
     background-color: black;
+    min-width: 40vw;
+    font-size: larger;
     color: white;
+    border-radius: 5px;
     font-family: monospace;
 }
 
 .header-page .console-intro h3 {
     font-family: monospace;
+}
+
+.header-page .console-intro .header {
+
+    display: block;
+
+    width: 100%;
+    min-width: 40vw;
+    border-radius: 5px;
+    background-color: #FAFAFA;
+
+    padding: 10px;
+    color: rgb(32, 32, 32);
+
+    text-align: center;
+}
+
+.header-page .console-intro .header .header-text {
+    margin-left: -85px;
+}
+
+.header-page .console-intro .header .dot {
+    float: left;
+    display: block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin: 10px;
+    margin-left: 7px;
+    margin-right: 7px;
+    margin-top: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.226);
+}
+
+
+.header-page .console-intro .header .dot:nth-of-type(1) {
+    background-color: #FF605C;
+}
+
+.header-page .console-intro .header .dot:nth-of-type(2) {
+    background-color: #FFBD44;
+}
+
+.header-page .console-intro .header .dot:nth-of-type(3) {
+    background-color: #00CA4E;
+}
+
+.header-page .console-intro .actual-intro {
+    margin: 25px;
+}
+
+.header-page .console-intro .skip-type-animation {
+    color: red;
+    float: right;
+    margin: 5px;
+    margin-right: 10px;
 }
 
 .currently-typing::after {

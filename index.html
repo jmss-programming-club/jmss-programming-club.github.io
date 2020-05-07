@@ -14,7 +14,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="icon" href="favicon.png">
-    <link rel="stylesheet" type="text/css" href="stylesheet.css">
     
 	<meta charset="utf-8">
     <meta name="description" content="This is the official website of JMSS's Programming Club!">
@@ -30,7 +29,10 @@
     </noscript>
     
     <!-- Bootstrap is a really popular CSS framework that does a lot of the small stuff like standardised fonts. -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <!-- Include our bespoke stylesheet so as to override Bootstrap's conflicting configurations -->
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
 
 </head>
 
@@ -38,9 +40,26 @@
 
 <div id="pg1" class="page header-page">
 
-    <span class="console-intro">
-        <span id="console-header" class="header">website console.programming_club@jmss</span>
-        <p class="actual-intro"></p>
+    <span id="console-intro" class="console-intro">
+        <span id="console-header" class="header">
+
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+
+            <span class="header-text">$console@ssh.jmss-programming-club.github.io</span>
+            
+        </span>
+        <p id="console-text" class="actual-intro">
+            > ssh jmss-programming-club.github.io --auth usr:p@ssw0rd<br>
+            [access granted, RSA key am9pbiB0aGUgY2x1Yg==]<br>
+            > cd .\pages\<br>
+            > display INTRO.html<br>
+            [displaying page...]<br>
+            <br>
+            Hi! Welcome to the JMSS programming club. Scroll down on this page to find out more. 
+        </p>
+        <a id="ani-stop-btn" href="#" class="skip-type-animation" onclick="toggleTypingAnimation(this)">skip animation</a>
     </span>
 
     <span class="go-down">go down <span class="gd-arrow">&#x21A1;</span></span>
@@ -51,30 +70,56 @@
 <script src="scripts/tilt.jquery.js"></script>
 
 <script>
-$('.js-tilt').tilt({
-    scale: 1.2
-})
 
 let ogtext;
 let cursor = 0;
+let doTypeAnimation = true;
+let intervalId;
+let currentEle;
+let anispd = 75;
 
 function typeIt(ele) {
 
-    ele.classList.add("currently-typing");
+    console.log("starting typing animation...");
 
+    currentEle = ele;
+
+    ele.classList.add("currently-typing");
     ogtext = ele.innerText;
     ele.innerText = "";
 
-    setInterval((ele) => {
-        if (ogtext[cursor] != undefined) {
-            ele.innerText += ogtext[cursor];
-            cursor++;
-        } else {clearInterval();ele.classList.remove("currently-typing");}
-    }, 75, ele)
-
-    cursor = 0;
+    intervalId = setInterval((ele) => {
+        if (doTypeAnimation) {
+            if (ogtext[cursor] != undefined) {
+                ele.innerText += ogtext[cursor];
+                cursor++;
+            } else {
+                cursor = 0;
+                clearInterval(intervalId);
+                console.log("finished animation.");
+                // [disabled] stops the cursor from blinking after completion of typing
+                //ele.classList.remove("currently-typing");
+            }
+        } else {
+            clearInterval(intervalId);
+            console.log("skipping animation.");
+            cursor = 0;
+        }
+    }, anispd, ele);
 
 }
+
+function toggleTypingAnimation(ele) {
+    if (doTypeAnimation) {
+        doTypeAnimation = false;
+        clearInterval(intervalId);
+        ele.style.display = "none";
+        currentEle.innerText = ogtext;
+    }
+}
+
+
+typeIt(document.getElementById("console-text"));
 
 
 </script>
