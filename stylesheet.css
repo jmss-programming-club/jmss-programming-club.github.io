@@ -28,13 +28,30 @@ body {
 
 }
 
-.header-page .titles {
-    text-align: center;
-    transition: 0.25s;
+.header-page .console-intro {
+    padding: 25px;
+    background-color: black;
+    color: white;
+    font-family: monospace;
 }
 
-.header-page .titles h3 {
+.header-page .console-intro h3 {
     font-family: monospace;
+}
+
+.currently-typing::after {
+    content: "|";
+    animation: blink 0.530s infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
 }
 
 .header-page .go-down {

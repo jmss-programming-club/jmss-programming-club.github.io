@@ -38,9 +38,9 @@
 
 <div id="pg1" class="page header-page">
 
-    <span class="titles" data-tilt>
-        <h1>Welcome to the JMSS Programming Club</h1>
-        <h3>a group of innovative and dynamic students</h3>
+    <span class="console-intro">
+        <span id="console-header" class="header">website console.programming_club@jmss</span>
+        <p class="actual-intro"></p>
     </span>
 
     <span class="go-down">go down <span class="gd-arrow">&#x21A1;</span></span>
@@ -54,6 +54,29 @@
 $('.js-tilt').tilt({
     scale: 1.2
 })
+
+let ogtext;
+let cursor = 0;
+
+function typeIt(ele) {
+
+    ele.classList.add("currently-typing");
+
+    ogtext = ele.innerText;
+    ele.innerText = "";
+
+    setInterval((ele) => {
+        if (ogtext[cursor] != undefined) {
+            ele.innerText += ogtext[cursor];
+            cursor++;
+        } else {clearInterval();ele.classList.remove("currently-typing");}
+    }, 75, ele)
+
+    cursor = 0;
+
+}
+
+
 </script>
 
 </body>
