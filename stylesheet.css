@@ -133,6 +133,30 @@ body {
 
 }
 
+/* --- MOBILE --- */
+@media only screen and (max-width: 900px) {
+
+    .header-page .console-intro {
+        width: 95vw;
+        height: 95vh;
+    }
+
+    .header-page .console-intro .header .dot {
+        display: none;
+    }
+
+    .header-page .console-intro .skip-type-animation {
+
+        position: absolute;
+        bottom: 4vh;
+        right: 5vw;
+
+    }
+
+
+}
+
+
 /* --- ADDITIONAL ELEMENTS --- */
 
 /* Used when Javascript is disabled */
