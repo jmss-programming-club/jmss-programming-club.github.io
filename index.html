@@ -25,13 +25,31 @@
     <meta name="color-scheme" content="only light">
 
 	<noscript>
-		<p class="js-disabled-header">Javascript is disabled on your browser. We use JS to serve dynamic content and animation. Without it, you may see a significant decrease in reliability and user experience.</p>
+		<p class="js-disabled-footer">Warning: Javascript is disabled in your browser. We use Javascript to serve dynamic content and animation. Without it, you may see a significant decrease in reliability and user experience.</p>
 	</noscript>
 
 </head>
 
 <body>
 
-<h1>Hi dulvin!</h1>
+<div id="pg1" class="page header-page">
+
+    <span class="titles" data-tilt>
+        <h1>Welcome to the JMSS Programming Club</h1>
+        <h3>a group of innovative and dynamic students</h3>
+    </span>
+
+    <span class="go-down">go down <span class="gd-arrow">&#x21A1;</span></span>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="scripts/tilt.jquery.js"></script>
+
+<script>
+$('.js-tilt').tilt({
+    scale: 1.2
+})
+</script>
 
 </body>
