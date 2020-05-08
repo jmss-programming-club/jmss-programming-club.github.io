@@ -108,8 +108,8 @@ function typeIt(ele) {
                 ele.innerText += ogtext[cursor];
                 cursor++;
 
-                // Fade out based on how much text has been inserted
-                document.getElementById("ani-stop-btn").style.opacity = (1-(ele.innerText.length/ogtext.length));
+                // Show animation progress percentage
+                document.getElementById("ani-stop-btn").innerText = `skip animation (${ Math.ceil((ele.innerText.length/ogtext.length)*100) }%)`;
 
             } else {
 
