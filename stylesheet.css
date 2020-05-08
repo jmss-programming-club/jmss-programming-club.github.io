@@ -95,6 +95,7 @@ body {
     float: right;
     margin: 5px;
     margin-right: 10px;
+    transition: 0.5s;
 }
 
 .currently-typing::after {
@@ -162,6 +163,12 @@ body {
 
 
 /* --- ADDITIONAL ELEMENTS --- */
+
+.disabled-link-with-space {
+    transition: 0.5s;
+    opacity: 0;
+    cursor: default;
+}
 
 /* Used when Javascript is disabled */
 .js-disabled-footer {

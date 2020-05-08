@@ -117,7 +117,12 @@ function typeIt(ele) {
 
                 clearInterval(intervalId);
                 cursor = 0;
-                document.getElementById("ani-stop-btn").style.display = "none";
+
+                // This keeps the link but disables it
+                document.getElementById("ani-stop-btn").classList.add("disabled-link-with-space");
+                document.getElementById("ani-stop-btn").onclick = () => {};
+                document.getElementById("ani-stop-btn").disabled = "true";
+
                 console.log("finished animation.");
 
                 // [disabled] stops the cursor from blinking after completion of typing
