@@ -51,6 +51,10 @@
             
         </span>
         <p id="console-text" class="actual-intro">
+
+            <!-- We're keeping this here instead of inserting the whole this via JS
+            because if the user has JS disabled then they won't see anything. -->
+
             > ssh jmss-programming-club.github.io --auth usr:p@ssw0rd<br>
             [access granted, RSA key IkpNU1MiL0NCQy9CYXNlNjQ=]<br>
             > cd .\pages\<br>
@@ -58,6 +62,8 @@
             [displaying page...]<br>
             <br>
             Hi! Welcome to the JMSS programming club. Scroll down on this page to find out more. 
+
+
         </p>
         <a id="ani-stop-btn" href="#" class="skip-type-animation" onclick="toggleTypingAnimation(this)">skip animation</a>
     </span>
@@ -91,14 +97,21 @@ function typeIt(ele) {
     intervalId = setInterval((ele) => {
         if (doTypeAnimation) {
             if (ogtext[cursor] != undefined) {
+
                 ele.innerText += ogtext[cursor];
                 cursor++;
+
+                document.getElementById("ani-stop-btn").style.opacity = (1-(ele.innerText.length/ogtext.length));
+
             } else {
+                
                 cursor = 0;
                 clearInterval(intervalId);
+                document.getElementById("ani-stop-btn").style.display = "none";
                 console.log("finished animation.");
                 // [disabled] stops the cursor from blinking after completion of typing
                 //ele.classList.remove("currently-typing");
+
             }
         } else {
             clearInterval(intervalId);
