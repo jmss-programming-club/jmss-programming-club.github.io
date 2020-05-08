@@ -85,7 +85,8 @@ let cursor = 0;
 let doTypeAnimation = true;
 let intervalId;
 let currentEle;
-let anispd = 75;
+
+let anispd = parseInt(document.hash) || 75;
 
 function typeIt(ele) {
 
