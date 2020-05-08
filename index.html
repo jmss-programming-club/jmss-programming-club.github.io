@@ -72,8 +72,9 @@
 
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="scripts/tilt.jquery.js"></script>
+<!-- I was going to use JQuery for tilting animations but we don't need it right now. -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="scripts/tilt.jquery.js"></script> -->
 
 <script>
 
@@ -88,9 +89,13 @@ function typeIt(ele) {
 
     console.log("starting typing animation...");
 
+    // Backup the current state of the element to global var
     currentEle = ele;
 
+    // Start the typing cursor
     ele.classList.add("currently-typing");
+
+    // Backup the original text and erase it from the element so we can type it
     ogtext = ele.innerText;
     ele.innerText = "";
 
@@ -101,22 +106,29 @@ function typeIt(ele) {
                 ele.innerText += ogtext[cursor];
                 cursor++;
 
+                // Fade out based on how much text has been inserted
                 document.getElementById("ani-stop-btn").style.opacity = (1-(ele.innerText.length/ogtext.length));
 
             } else {
-                
-                cursor = 0;
+
+                // This happens after the typing has completed.
+
                 clearInterval(intervalId);
+                cursor = 0;
                 document.getElementById("ani-stop-btn").style.display = "none";
                 console.log("finished animation.");
+
                 // [disabled] stops the cursor from blinking after completion of typing
                 //ele.classList.remove("currently-typing");
 
             }
+
         } else {
+
             clearInterval(intervalId);
             console.log("skipping animation.");
             cursor = 0;
+
         }
     }, anispd, ele);
 
@@ -131,9 +143,7 @@ function toggleTypingAnimation(ele) {
     }
 }
 
-
 typeIt(document.getElementById("console-text"));
-
 
 </script>
 
