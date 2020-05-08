@@ -141,6 +141,10 @@ body {
         height: 95vh;
     }
 
+    .header-page .console-intro .header .header-text {
+        margin-left: 0;
+    }
+
     .header-page .console-intro .header .dot {
         display: none;
     }
